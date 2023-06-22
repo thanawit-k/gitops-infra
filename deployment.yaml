@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: react-app
-  namespace: default
 spec:
   replicas: 3
   selector:
@@ -14,16 +13,15 @@ spec:
         app: react-app
     spec:
       containers:
-      - image: thanawit09/react-app:0.1
+      - name: react-app
+        image: thanawit09/reactapp-ci:1.0
         imagePullPolicy: Always
-        name: react-app
         ports:
         - containerPort: 80
         resources:
-          limits:
-            cpu: "64Mi"
-            memory: "250m"
           requests:
-            cpu: "128Mi"
-            memory: "500m"
-
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
