@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Service
+metadata:
+  name: react-app
+  namespace: default
+spec:
+  type: NodePort
+  ports:
+    port: 80
+    targetPort: 80
+    protocal: TCP
+    nodePort: 310000
+  selector:
+    app: react-app
